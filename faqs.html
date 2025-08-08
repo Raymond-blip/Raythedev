@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs & Questions</title>
+    <link rel="stylesheet" href="index.html">
+    <style>
+        /* Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: #28a745;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            color: #555;
+        }
+
+        .faq-answer.visible {
+            display: block;
+        }
+
+        .faq-question span {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-question span.rotate {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>FAQs & Questions</h1>
+    </header>
+    <main class="content">
+        <section>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the purpose of this portfolio?
+                    <span>&#9654;</span>
+                </div>
+                <div class="faq-answer">
+                    This portfolio showcases Raymond Oluwanifemi's skills and projects as a frontend developer.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I contact Raymond for a project?
+                    <span>&#9654;</span>
+                </div>
+                <div class="faq-answer">
+                    You can contact Raymond via the Contact page by filling out the form or sending an email.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I request custom functionality?
+                    <span>&#9654;</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, Raymond is open to requests for custom projects. Feel free to reach out to discuss your needs.
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Ask a Question</h2>
+            <form id="question-form">
+                <div style="margin-bottom: 1rem;">
+                    <label for="name" style="display: block; font-weight: bold;">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required style="width: 100%; padding: 0.5rem;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="question" style="display: block; font-weight: bold;">Your Question</label>
+                    <textarea id="question" name="question" rows="4" placeholder="Type your question here..." required style="width: 100%; padding: 0.5rem;"></textarea>
+                </div>
+                <button type="submit" style="background: #28a745; color: white; padding: 0.5rem 1rem; border: none; cursor: pointer;">
+                    Submit Question
+                </button>
+            </form>
+            <div id="form-message" style="margin-top: 1rem; color: #28a745; display: none;">Your question has been submitted. Thank you!</div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-5">
+        <p class="mb-0">&copy; All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ Interaction
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('span');
+                
+                // Toggle visibility
+                answer.classList.toggle('visible');
+                icon.classList.toggle('rotate');
+            });
+        });
+
+        // JavaScript for Form Submission
+        const form = document.getElementById('question-form');
+        const message = document.getElementById('form-message');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+            
+            // Simple form feedback
+            message.style.display = 'block';
+            form.reset(); // Clear the form
+        });
+    </script>
+</body>
+</html>
